@@ -82,8 +82,8 @@ static void configure_simulator(int argc, char **argv)
     const char *env_w = getenv("LV_SIM_WINDOW_WIDTH");
     const char *env_h = getenv("LV_SIM_WINDOW_HEIGHT");
     /* Default values */
-    settings.window_width = atoi(env_w ? env_w : "800");
-    settings.window_height = atoi(env_h ? env_h : "480");
+    settings.window_width = atoi(env_w ? env_w : "1280");
+    settings.window_height = atoi(env_h ? env_h : "1000");
 
     /* Parse the command-line options. */
     while ((opt = getopt (argc, argv, "b:fmW:H:BVh")) != -1) {
@@ -150,8 +150,9 @@ int main(int argc, char **argv)
 #endif
 
     /*Create a Demo*/
-    lv_demo_widgets();
-    lv_demo_widgets_start_slideshow();
+    // lv_demo_widgets();
+    // lv_demo_widgets_start_slideshow();
+    lv_demo_high_res_api_example("/usr/share/ti-lvgl-demo/assets/", "/usr/share/ti-lvgl-demo/assets/img_lv_demo_high_res_ti_logo.png", "/usr/share/ti-lvgl-demo/slides");
 
     /* Enter the run loop of the selected backend */
     driver_backends_run_loop();
