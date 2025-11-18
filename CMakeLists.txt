@@ -29,7 +29,7 @@ set(LV_CONF_DEFAULTS_OLD_PATH "${CMAKE_SOURCE_DIR}/lv_conf.defaults.old")
 
 # If CONFIG is not default, copy the selected config to lv_conf.defaults
 if(NOT CONFIG STREQUAL "default")
-    set(CONFIG_FILE "${CMAKE_SOURCE_DIR}/configs/${CONFIG}.defaults")
+    set(CONFIG_FILE "${CMAKE_SOURCE_DIR}/configs/lv_conf.defaults")
     
     # Verify the config file exists
     if(NOT EXISTS "${CONFIG_FILE}")
@@ -376,7 +376,7 @@ target_include_directories(lvgl_linux PUBLIC
     ${PROJECT_SOURCE_DIR}/src/lib ${LVGL_CONF_INC_DIR})
 
 # Link LVGL with external dependencies - Modern CMake/CMP0079 allows this
-target_link_libraries(lvgl PUBLIC ${PKG_CONFIG_LIB} m pthread)
+target_link_libraries(lvgl PUBLIC ${PKG_CONFIG_LIB} m pthread  asound mosquitto )
 
 add_executable(lvglsim src/main.c ${LV_LINUX_SRC} ${LV_LINUX_BACKEND_SRC})
 target_link_libraries(lvglsim lvgl_linux lvgl)
