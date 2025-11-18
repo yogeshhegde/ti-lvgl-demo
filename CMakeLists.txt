@@ -23,7 +23,40 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic")
 
 option(CONFIG "Config to use leave empty for `lv_conf.defaults`" "default")
+# ============================================================================
+# ADD THIS SECTION: Find Python with pcpp support
+# ============================================================================
+# Allow Python3_EXECUTABLE to be overridden via environment or CMake variable
+if(DEFINED ENV{Python3_EXECUTABLE})
+    set(Python3_EXECUTABLE $ENV{Python3_EXECUTABLE} CACHE FILEPATH "Python3 executable" FORCE)
+    message(STATUS "Using Python from environment: ${Python3_EXECUTABLE}")
+elseif(NOT DEFINED Python3_EXECUTABLE)
+    # Find Python normally if not specified
+    find_package(Python3 REQUIRED COMPONENTS Interpreter)
+    set(Python3_EXECUTABLE ${Python3_EXECUTABLE} CACHE FILEPATH "Python3 executable" FORCE)
+    message(STATUS "Found Python3: ${Python3_EXECUTABLE}")
+endif()
 
+# Verify that pcpp is available in the Python environment
+execute_process(
+    COMMAND ${Python3_EXECUTABLE} -c "import pcpp; print('pcpp version:', pcpp.__version__)"
+    RESULT_VARIABLE PCPP_CHECK_RESULT
+    OUTPUT_VARIABLE PCPP_CHECK_OUTPUT
+    ERROR_VARIABLE PCPP_CHECK_ERROR
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+if(NOT PCPP_CHECK_RESULT EQUAL 0)
+    message(WARNING "pcpp not found in Python environment")
+    message(WARNING "Python: ${Python3_EXECUTABLE}")
+    message(WARNING "Error: ${PCPP_CHECK_ERROR}")
+    message(FATAL_ERROR "Please install python3-pcpp: pip install pcpp")
+else()
+    message(STATUS "Python pcpp check: ${PCPP_CHECK_OUTPUT}")
+endif()
+# ============================================================================
+# END OF ADDED SECTION
+# ============================================================================ 
 set(LV_CONF_DEFAULTS_PATH "${CMAKE_SOURCE_DIR}/lv_conf.defaults")
 set(LV_CONF_DEFAULTS_OLD_PATH "${CMAKE_SOURCE_DIR}/lv_conf.defaults.old")
 
