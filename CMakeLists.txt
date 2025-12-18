@@ -378,7 +378,7 @@ target_include_directories(lvgl_linux PUBLIC
 # Link LVGL with external dependencies - Modern CMake/CMP0079 allows this
 target_link_libraries(lvgl PUBLIC ${PKG_CONFIG_LIB} m pthread  asound mosquitto )
 
-add_executable(lvglsim src/main.c ${LV_LINUX_SRC} ${LV_LINUX_BACKEND_SRC})
+add_executable(lvglsim src/main.c src/txn_logo.c src/penguin_logo.c ${LV_LINUX_SRC} ${LV_LINUX_BACKEND_SRC})
 target_link_libraries(lvglsim lvgl_linux lvgl)
 
 if(WERROR)

@@ -4,7 +4,7 @@
 # Use cmake to copy it into your workspace:
 # eg: `cmake -B build -DCONFIG=drm-egl-2d` for `configs/drm-egl-2d.defaults`
 
-LV_COLOR_DEPTH	    16
+LV_COLOR_DEPTH	    1
 
 # Draw units
 # A draw unit is responsible for how the LVGL UI is rendered to the draw buffer
@@ -24,7 +24,7 @@ LV_USE_DRAW_SDL 0
 # A display driver is responsible for how the draw buffer is rendered to the screen
 
 # Simple framebuffer device
-LV_USE_LINUX_FBDEV      0
+LV_USE_LINUX_FBDEV      1
 LV_LINUX_FBDEV_RENDER_MODE   LV_DISPLAY_RENDER_MODE_DIRECT
 LV_LINUX_FBDEV_BUFFER_COUNT  2
 
@@ -44,7 +44,7 @@ LV_SDL_DIRECT_EXIT      1
 LV_SDL_MOUSEWHEEL_MODE  LV_SDL_MOUSEWHEEL_MODE_ENCODER 
 
 # Wayland
-LV_USE_WAYLAND          1
+LV_USE_WAYLAND          0
 LV_WAYLAND_BUF_COUNT            1
 LV_WAYLAND_RENDER_MODE          LV_DISPLAY_RENDER_MODE_PARTIAL
 LV_WAYLAND_WINDOW_DECORATIONS   0
@@ -55,7 +55,7 @@ LV_WAYLAND_USE_DMABUF           0
 LV_USE_GLFW 0
 
 # Input support (enable when using FBDEV or DRM)
-LV_USE_EVDEV    0
+LV_USE_EVDEV    1
 LV_USE_LIBINPUT 0
 
 # Auxiliary drivers
@@ -99,10 +99,10 @@ LV_USE_BARCODE          1
 LV_USE_QRCODE           1
 
 # Examples
-LV_BUILD_EXAMPLES 1
+LV_BUILD_EXAMPLES 0
 
 # Demos
-LV_BUILD_DEMOS 1
+LV_BUILD_DEMOS 0
 LV_USE_DEMO_WIDGETS         1
 LV_USE_DEMO_KEYPAD_AND_ENCODER 1
 LV_USE_DEMO_BENCHMARK       1
@@ -111,7 +111,7 @@ LV_USE_DEMO_STRESS          1
 LV_USE_DEMO_MUSIC           1
 
 # Enable logging for easier debugging
-LV_USE_LOG 0
+LV_USE_LOG 1
 LV_LOG_LEVEL LV_LOG_LEVEL_WARN
 LV_LOG_PRINTF 1
 
@@ -121,11 +121,11 @@ LV_USE_PERF_MONITOR        0
 LV_SYSMON_PROC_IDLE_AVAILABLE 1
 
 # Vector graphics
-LV_USE_FLOAT            1
-LV_USE_MATRIX           1
-LV_USE_VECTOR_GRAPHIC   1
-LV_USE_THORVG_INTERNAL  1 
-LV_USE_LOTTIE           1
+LV_USE_FLOAT            0
+LV_USE_MATRIX           0
+LV_USE_VECTOR_GRAPHIC   0
+LV_USE_THORVG_INTERNAL  0 
+LV_USE_LOTTIE           0
 
 # Assert handler
 LV_ASSERT_HANDLER_INCLUDE <assert.h>
