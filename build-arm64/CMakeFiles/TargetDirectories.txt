@@ -1,0 +1,16 @@
+/app/lv_port_linux/build-arm64/CMakeFiles/lvgl_linux.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/lvglsim.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/run.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/edit_cache.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/rebuild_cache.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/list_install_components.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/install.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/install/local.dir
+/app/lv_port_linux/build-arm64/CMakeFiles/install/strip.dir
+/app/lv_port_linux/build-arm64/lvgl/CMakeFiles/lvgl.dir
+/app/lv_port_linux/build-arm64/lvgl/CMakeFiles/edit_cache.dir
+/app/lv_port_linux/build-arm64/lvgl/CMakeFiles/rebuild_cache.dir
+/app/lv_port_linux/build-arm64/lvgl/CMakeFiles/list_install_components.dir
+/app/lv_port_linux/build-arm64/lvgl/CMakeFiles/install.dir
+/app/lv_port_linux/build-arm64/lvgl/CMakeFiles/install/local.dir
+/app/lv_port_linux/build-arm64/lvgl/CMakeFiles/install/strip.dir

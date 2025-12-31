@@ -24,11 +24,15 @@
 #include "lvgl/lvgl.h"
 #if LV_USE_EVDEV
 #include "lvgl/src/core/lv_global.h"
+#include "lvgl/src/misc/lv_event_private.h"
+#include "lvgl/src/misc/lv_event.h"
+#include "lvgl/src/indev/lv_indev_private.h"
 #include "../backends.h"
 
 /*********************
  *      DEFINES
  *********************/
+ extern void indev_keys_cb(lv_event_t *e);
 
 /**********************
  *      TYPEDEFS
@@ -94,6 +98,7 @@ static void indev_deleted_cb(lv_event_t *e)
     lv_obj_delete(cursor_obj);
 }
 
+uint32_t BUTTON_PRESS_EVENT;
 
 /*
  * Set cursor icon
@@ -116,6 +121,12 @@ static void discovery_cb(lv_indev_t *indev, lv_evdev_type_t type, void *user_dat
 
     if(type == LV_EVDEV_TYPE_REL) {
         set_mouse_cursor_icon(indev, disp);
+    }
+    if(type == LV_EVDEV_TYPE_KEY) {
+        LV_LOG_USER("new 'key' type device discovered");
+        LV_LOG_USER("indev_type: %d", indev->type);
+        BUTTON_PRESS_EVENT = lv_event_register_id();
+        lv_indev_add_event_cb(indev, indev_keys_cb, BUTTON_PRESS_EVENT, NULL);
     }
 }
 
